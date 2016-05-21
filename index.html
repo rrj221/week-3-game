@@ -5,36 +5,30 @@
 </head>
 <body>
 
+<img src="assets/images/nbaLogo.jpg" alt="NBA Logo"/>
+
 <div id="game">
-	<p>Press any key to get started!</p>
-	<p>Wins: </p>
-	<p class="word">_ _ _ _ _ _</p>
-	<p>Number of guesses remaining: </p>
-	<p>Letters already guessed: </p>
+	<p id="instructions">Press any key to get started!</p>
+	<p id="wins">Wins: </p>
+	<p>CURRENT WORD</p>
+	<p id="wordDisplay"></p>
+	<p id="guessesRemainingDisplay">Number of guesses remaining: 5</p>
+	<p id="guessedDisplay">Letters already guessed: </p>
 </div>
 
 <script type="text/javascript">
 
 	var wins = 0;
-	var guesses = 6;
+	var guesses = 5;
 	var currentTeamArray = [];
-	var alreadyGuessedArray = [];
+	var userGuessArray = [];
 	var wordArray = [];
+	var wordForScreen;
 	var counter = 0;
 
-	// var teams = ["Blazers", "Bucks", "Bulls", "Cavaliers", "Celtics", "Clippers", "Grizzlies", "Hawks", "Heat", "Hornets", "Jazz", "Kings", "Knicks", "Lakers", "Magic", "Mavericks", "Nets", "Nuggets", "Pacers", "Pelicans", "Pistons", "Raptors", "Rockets", "Sixers", "Spurs", "Suns", "Timberwolves", "Thunder", "Warriors", "Wizards"];
+	var teams = ["BLAZERS", "BUCKS", "BULLS", "CAVALIERS", "CELTICS", "CLIPPERS", "GRIZZLIES", "HAWKS", "HEAT", "HORNETS", "JAZZ", "KINGS", "KNICKS", "LAKERS", "MAGIC", "MAVERICKS", "NETS", "NUGGETS", "PACERS", "PELICANS", "PISTONS", "RAPTORS", "ROCKETS", "SIXERS", "SPURS", "SUNS", "TIMBERWOLVES", "THUNDER", "WARRIORS", "WIZARDS"];
 
-	// var teams = ["blazers", "bucks", "bulls", "cavaliers", "celtics", "clippers", "grizzlies", "hawks", "heat", "hornets", "jazz", "kings", "knicks", "lakers", "magic", "mavericks", "nets", "nuggets", "pacers", "pelicans", "pistons", "raptors", "rockets", "sixers", "spurs", "suns", "timberwolves", "thunder", "warriors", "wizards"];	
-
-	var teams = ["BLAZERS", "BUCKS", "BULLS", "CAVALIERS", "CELTICS", "CLIPPERS", "GRIZZLIES", "HAWKS", "HEAT", "HORNETS", "JAZZ", "KINGS", "KNICKS", "LAKERS", "MAGIC", "MAVERICKS", "NETS", "NUGGETS", "PACERS", "PELICANS", "PISTONS", "RAPTORS", "ROCKETS", "SIXERS", "SPURS", "SUNS", "TIMBERWOLVES", "THUNDER", "WARRIORS", "WIZARDS",];
-
-	console.log(teams.length);
-
-	for (var i = 0; i < (teams.length - 1); i++) {
-		console.log(teams[i]);
-	}
-
-// Create code to randomly choose one of the 30 options (Computer) 
+// Create code to randomly choose one of the 30 teams 
 	var currentTeam = teams[Math.floor(Math.random()*teams.length)];
 
 	console.log(currentTeam);
@@ -49,43 +43,6 @@
 	}
 
 
-// I'm going to choose a new team
-
-	//deletes array currentTeamArray and wordArray
-	for (i = 0; i < (currentTeam.length); i++) {
-		currentTeamArray.pop();
-		wordArray.pop();
-	}	
-
-	//lenght should be zero now
-	console.log(currentTeamArray.length);
-	console.log(wordArray.length);
-
-	// Create code to randomly choose one of the three options (Computer) 
-	var currentTeam = teams[Math.floor(Math.random()*teams.length)];
-
-
-	console.log(currentTeam);
-
-
-	//updating the array
-	for (i = 0; i < (currentTeam.length); i++) {
-		currentTeamArray[i] = currentTeam.charAt(i);
-		wordArray[i] = '_';
-		console.log(currentTeamArray[i]);
-		console.log(wordArray[i]);
-	}
-
-// This will make the initial  _ _ _ _ _ array (I just put it all above)
-	
-	//initial word array of _ _ _
-	// for (i = 0; i < (currentTeam.length); i++){
-	// 	wordArray[i] = '_';
-	// 	console.log(wordArray[i]);
-	// }
-
-
-
 /////////////////////////////////////////////////////////////////////////////////////
 
 	// Captures Key Clicks
@@ -96,58 +53,119 @@
 		// Determines which exact key was selected. Make it lowercase
 		var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
 
+		// Alerts with user guess
+		// alert(userGuess);
+
+		// START THE GAME - starts on any key press
+		if (counter === 1) {
+			wordForScreen = wordArray.join([separator = ' ']);
+			document.getElementById("wordDisplay").innerHTML = wordForScreen;
+			document.getElementById("instructions").innerHTML = "Let the games begin!";
+			return;	
+		}
+
 		// error checking - must be a letter
 		if (userGuess < 'A' || userGuess > 'Z') {
 			return alert("That's not a letter!");
 		} 
 
-		// Alerts with user guess
-		alert(userGuess);
-
-// This is where I might put a large chunk of the codes
-		if (counter === 1) {
-
-		//or maybe I don't even need this and i can just reset everything when you lose
-		//we shall see
-
+		//error checking - makes sure you haven't guessed that already
+		for (var i = 0; i < (currentTeamArray.length); i++) {
+			if (userGuessArray.indexOf(userGuess) != -1) {
+				return alert("you already guess that!");
+			}	
 		}
 
-		//checks to see if your guess is correct
+		// Puts user guess into userGuessArray
+		userGuessArray.push(userGuess);
+		console.log(userGuessArray);
+
+		//checks to see if your guess is correct	
 		if (currentTeamArray.indexOf(userGuess) === -1) {
+			document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: " + userGuessArray;
 			guesses--;
+			document.getElementById("guessesRemainingDisplay").innerHTML = "Number of guesses remaining: " + guesses;			
 		} else {
-			console.log(userGuess);
-			console.log("team length: " + currentTeamArray.length);
-			console.log("word length: " + wordArray.length);
+			// console.log(userGuess);
+			// console.log("team length: " + currentTeamArray.length);
+			// console.log("word length: " + wordArray.length);
 			for (var i = 0; i < (currentTeamArray.length); i++) {
 				if (currentTeamArray[i] === userGuess) {
-					if (alreadyGuessedArray.indexOf(userGuess) != -1) {
-						return alert("you already guess that!");
-					} else {
-						wordArray[i] = userGuess;
-					}
+					wordArray[i] = userGuess;
+					document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: "+userGuessArray;
+					wordForScreen = wordArray.join([separator = ' ']);
+					document.getElementById("wordDisplay").innerHTML = wordForScreen;
 				} 
 			}
 		}
 			//debugging - shows wordArray after that
 			console.log(wordArray);
 
-		// Puts user guess into guessArray
-		alreadyGuessedArray.push(userGuess);
-		console.log(alreadyGuessedArray);	
+// YOU WON ////////////////////////////////////////////				
+		for (var i = 0; i < (wordArray.length); i++) {
+			if (wordArray.indexOf("_") === -1) {
 
-		//end game stuff (remember the game also ends if they win!!!!!)
+			//make sure to let the user know they are a winner
+				document.getElementById("instructions").innerHTML = "You're a winner! Press any key to play again."
+				currentTeamArray = [];
+				wordArray = [];
+
+		 	// Create code to randomly choose one of the 30 teams
+				var currentTeam = teams[Math.floor(Math.random()*teams.length)];
+
+			//updating the array
+				for (i = 0; i < (currentTeam.length); i++) {
+					currentTeamArray[i] = currentTeam.charAt(i);
+					wordArray[i] = '_';
+					console.log(currentTeamArray[i]);
+					console.log(wordArray[i]);
+				}
+			
+				guesses = 5;
+				document.getElementById("guessesRemainingDisplay").innerHTML = "Number of guesses remaining: " + guesses;
+				userGuessArray = [];
+				document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: ";
+
+				counter = 0;
+				wins++;
+				document.getElementById("wins").innerHTML = "Wins: "+wins;
+				// return;
+			}	
+		} 	
+
+// YOU LOST ////////////////////////////////////////////	
 		if (guesses === 0) {
 
-		//clear out arrays and such
-		//maybe refill them too
-
 		//make sure to let the user know they are a loser
+			document.getElementById("instructions").innerHTML = "You're a freaking loser. Press any key to try again."
+			currentTeamArray = [];
+			wordArray = [];
+
+	 	// Create code to randomly choose one of the 30 teams
+			var currentTeam = teams[Math.floor(Math.random()*teams.length)];
+
+		//updating the array
+			for (i = 0; i < (currentTeam.length); i++) {
+				currentTeamArray[i] = currentTeam.charAt(i);
+				wordArray[i] = '_';
+				console.log(currentTeamArray[i]);
+				console.log(wordArray[i]);
+			}
+			
+			guesses = 5;
+			document.getElementById("guessesRemainingDisplay").innerHTML = "Number of guesses remaining: " + guesses;
+			userGuessArray = [];
+			document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: ";
 
 			counter = 0;
 		}
 
-}	
+	}	
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -156,5 +174,10 @@
 
 
 
+
+
+
 </body>
 </html>
+
+

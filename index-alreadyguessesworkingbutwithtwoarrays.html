@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman</title>
+</head>
+<body>
+
+<img src="assets/images/nbaLogo.jpg" alt="NBA Logo"/>
+
+<div id="game">
+	<p>Press any key to get started!</p>
+	<p>Wins: </p>
+	<p>CURRENT WORD </p>
+	<p id="wordDisplay">_ _ _ _ _ _</p>
+	<p>Number of guesses remaining: 6</p>
+	<p id="guessedDisplay">Letters already guessed: </p>
+</div>
+
+<script type="text/javascript">
+
+	var wins = 0;
+	var guesses = 6;
+	var currentTeamArray = [];
+	var userGuessesArray = [];
+	var alreadyGuessedArray = [];
+	var wordArray = [];
+	var counter = 0;
+
+	// var teams = ["Blazers", "Bucks", "Bulls", "Cavaliers", "Celtics", "Clippers", "Grizzlies", "Hawks", "Heat", "Hornets", "Jazz", "Kings", "Knicks", "Lakers", "Magic", "Mavericks", "Nets", "Nuggets", "Pacers", "Pelicans", "Pistons", "Raptors", "Rockets", "Sixers", "Spurs", "Suns", "Timberwolves", "Thunder", "Warriors", "Wizards"];
+
+	// var teams = ["blazers", "bucks", "bulls", "cavaliers", "celtics", "clippers", "grizzlies", "hawks", "heat", "hornets", "jazz", "kings", "knicks", "lakers", "magic", "mavericks", "nets", "nuggets", "pacers", "pelicans", "pistons", "raptors", "rockets", "sixers", "spurs", "suns", "timberwolves", "thunder", "warriors", "wizards"];	
+
+	var teams = ["BLAZERS", "BUCKS", "BULLS", "CAVALIERS", "CELTICS", "CLIPPERS", "GRIZZLIES", "HAWKS", "HEAT", "HORNETS", "JAZZ", "KINGS", "KNICKS", "LAKERS", "MAGIC", "MAVERICKS", "NETS", "NUGGETS", "PACERS", "PELICANS", "PISTONS", "RAPTORS", "ROCKETS", "SIXERS", "SPURS", "SUNS", "TIMBERWOLVES", "THUNDER", "WARRIORS", "WIZARDS",];
+
+	console.log(teams.length);
+
+	for (var i = 0; i < (teams.length - 1); i++) {
+		console.log(teams[i]);
+	}
+
+// Create code to randomly choose one of the 30 options (Computer) 
+	var currentTeam = teams[Math.floor(Math.random()*teams.length)];
+
+	console.log(currentTeam);
+
+	// fills in currentTeamArray with current team. 
+	// fills in wordArray with correct amount of _ _ _ _
+	for (i = 0; i < (currentTeam.length); i++) {
+		currentTeamArray[i] = currentTeam.charAt(i);
+		wordArray[i] = '_';
+		console.log(currentTeamArray[i]);
+		console.log(wordArray[i]);
+	}
+
+
+// I'm going to choose a new team. This stuff should be moved down.
+
+	//deletes array currentTeamArray and wordArray
+	for (i = 0; i < (currentTeam.length); i++) {
+		currentTeamArray.pop();
+		wordArray.pop();
+	}	
+
+	//lenght should be zero now
+	console.log(currentTeamArray.length);
+	console.log(wordArray.length);
+
+	// Create code to randomly choose one of the three options (Computer) 
+	var currentTeam = teams[Math.floor(Math.random()*teams.length)];
+
+
+	console.log(currentTeam);
+
+
+	//updating the array
+	for (i = 0; i < (currentTeam.length); i++) {
+		currentTeamArray[i] = currentTeam.charAt(i);
+		wordArray[i] = '_';
+		console.log(currentTeamArray[i]);
+		console.log(wordArray[i]);
+	}
+
+// This will make the initial  _ _ _ _ _ array (I just put it all above)
+	
+	//initial word array of _ _ _
+	// for (i = 0; i < (currentTeam.length); i++){
+	// 	wordArray[i] = '_';
+	// 	console.log(wordArray[i]);
+	// }
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+	// Captures Key Clicks
+	document.onkeyup = function(event) {
+
+		counter++;
+
+		// Determines which exact key was selected. Make it lowercase
+		var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
+
+		// error checking - must be a letter
+		if (userGuess < 'A' || userGuess > 'Z') {
+			return alert("That's not a letter!");
+		} 
+
+		// Alerts with user guess
+		alert(userGuess);
+
+// This is where I might put a large chunk of the codes
+		if (counter === 1) {
+
+		//or maybe I don't even need this and i can just reset everything when you lose
+		//we shall see
+
+		}
+
+		//error checking - makes sure you haven't guessed that already
+		for (var i = 0; i < (currentTeamArray.length); i++) {
+			if (userGuessesArray.indexOf(userGuess) != -1) {
+				return alert("you already guess that!");
+			}	
+		}
+
+		// Puts user guess into userGuessesArray
+		userGuessesArray.push(userGuess);
+		console.log(userGuessesArray);
+
+		//checks to see if your guess is correct	
+		if (currentTeamArray.indexOf(userGuess) === -1) {
+			document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: " + userGuessesArray;
+			guesses--;
+		} else {
+			console.log(userGuess);
+			console.log("team length: " + currentTeamArray.length);
+			console.log("word length: " + wordArray.length);
+			for (var i = 0; i < (currentTeamArray.length); i++) {
+				if (currentTeamArray[i] === userGuess) {
+					wordArray[i] = userGuess;
+					document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: " + userGuessesArray;
+				} 
+			}
+		}
+			//debugging - shows wordArray after that
+			console.log(wordArray);
+
+		// Puts user guess into alreadyguessedArray - used for error checking (this might not be the best way to approach this - shouldn't need two arrays)
+		alreadyGuessedArray.push(userGuess);
+		console.log(alreadyGuessedArray);	
+
+		//end game stuff (remember the game also ends if they win!!!!!)
+		if (guesses === 0) {
+
+		//clear out arrays and such
+		//maybe refill them too
+
+		//make sure to let the user know they are a loser
+
+			counter = 0;
+		}
+
+}	
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
