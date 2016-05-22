@@ -47,7 +47,13 @@
 
 	console.log(currentTeamIndex);
 
-	currentTeamIndex = currentTeamIndex;
+	//plays audio
+	var audio = new Audio('assets/sounds/ball-dribbled.mp3');
+	audio.addEventListener('ended', function() {
+	    this.currentTime = 0;
+	    this.play();
+	}, false);
+	audio.play();
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -108,6 +114,9 @@
 // YOU WON ////////////////////////////////////////////				
 		for (var i = 0; i < (wordArray.length); i++) {
 			if (wordArray.indexOf("_") === -1) {
+
+				//I had to do this clumsy thing because at this point for some reason,
+				//currentTeam and currentTeamIndex are undefined
 				wordForWinStuff = wordArray.join([separator = '']);	
 				//giant if else statment
 				if (wordForWinStuff === 'BLAZERS') {
@@ -212,6 +221,12 @@
 				currentTeamArray = [];
 				wordArray = [];
 
+				var audio = new Audio('assets/sounds/crowd-cheers.mp3');
+				audio.play();
+
+				// var audio = new Audio('assets/sounds/ball-dribbled.mp3');
+				// audio.play();
+
 		 		// Create code to randomly choose one of the 30 teams
 				var currentTeamIndex = Math.floor(Math.random()*teams.length);
 				var currentTeam = teams[currentTeamIndex];
@@ -243,6 +258,9 @@
 			document.getElementById("instructions").innerHTML = "You're a freaking loser. Press any key to try again."
 			currentTeamArray = [];
 			wordArray = [];
+
+			var audio = new Audio('assets/sounds/embarrased.mp3');
+			audio.play();
 
 	 	// Create code to randomly choose one of the 30 teams
 			var currentTeamIndex = Math.floor(Math.random()*teams.length);
