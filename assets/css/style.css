@@ -1,8 +1,21 @@
+@font-face {
+    font-family: nbaFont;
+    src: url("../fonts/promesh.mesh-regular.ttf");
+}
+
 .nba-logo {
 	margin: 0 auto;
 }
 
 body {
 	background-image: url("../images/basketball-net.jpg");
-	color: white;
+	color: orange;
+	font-family: nbaFont;
+	font-size: 30px;
+}
+
+.curry {
+	width: 500px;
+	height: 281.25px;
+	opacity: 0;
 }
