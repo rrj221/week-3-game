@@ -38,6 +38,14 @@ audio.addEventListener('ended', function() {
 }, false);
 audio.play();
 
+
+//shows curry
+// var element = document.getElementById("curry");
+// element.style.opacity = 1;
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////
 
 // Captures Key Clicks
@@ -56,6 +64,7 @@ document.onkeyup = function(event) {
 		wordForScreen = wordArray.join([separator = ' ']);
 		document.getElementById("wordDisplay").innerHTML = wordForScreen;
 		document.getElementById("instructions").innerHTML = "Let the games begin!";
+		document.getElementById("instructions2").innerHTML = "<br/>"
 		return;	
 	}
 
@@ -78,14 +87,14 @@ document.onkeyup = function(event) {
 
 	//checks to see if your guess is correct	
 	if (currentTeamArray.indexOf(userGuess) === -1) {
-		document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: " + userGuessArray;
+		document.getElementById("guessedDisplay").innerHTML = userGuessArray;
 		guesses--;
 		document.getElementById("guessesRemainingDisplay").innerHTML = "Number of guesses remaining: " + guesses;			
 	} else {
 		for (var i = 0; i < (currentTeamArray.length); i++) {
 			if (currentTeamArray[i] === userGuess) {
 				wordArray[i] = userGuess;
-				document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: "+userGuessArray;
+				document.getElementById("guessedDisplay").innerHTML = userGuessArray;
 				wordForScreen = wordArray.join([separator = ' ']);
 				document.getElementById("wordDisplay").innerHTML = wordForScreen;
 			} 
@@ -102,6 +111,15 @@ document.onkeyup = function(event) {
 			//currentTeam and currentTeamIndex are undefined
 			wordForWinStuff = wordArray.join([separator = '']);	
 			//giant if else statment
+
+			//what i would like to do if i could get the currentTeamIndex to not be undefined
+			   //create an array of images in same order as team
+			   //do a for loop to check each one to see if it's equal to the index
+			   //if it is, show the logo from the logo array
+
+			//is there a better way to do this?   
+
+
 			if (wordForWinStuff === 'BLAZERS') {
 				document.getElementById("winningTeamDisplay").innerHTML = 
 				'<img src="assets/images/blazers-logo.gif" alt="Blazers Logo"/>';
@@ -200,7 +218,8 @@ document.onkeyup = function(event) {
 // SECOND HALF OF WIN//////////////////////////////////////////////////////////				
 
 			//make sure to let the user know they are a winner
-			document.getElementById("instructions").innerHTML = "You're a winner! <br/>Press any key to play again."
+			document.getElementById("instructions").innerHTML = "You're a winner!";
+			document.getElementById("instructions2").innerHTML = "Press any key to play again.";
 			currentTeamArray = [];
 			wordArray = [];
 
@@ -225,11 +244,11 @@ document.onkeyup = function(event) {
 			guesses = 5;
 			document.getElementById("guessesRemainingDisplay").innerHTML = "Number of guesses remaining: " + guesses;
 			userGuessArray = [];
-			document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: ";
+			document.getElementById("guessedDisplay").innerHTML = "<br/>";
 
 			counter = 0;
 			wins++;
-			document.getElementById("wins").innerHTML = "Wins: "+wins;
+			document.getElementById("wins").innerHTML = wins;
 			
 		}	
 	} 	
@@ -238,7 +257,8 @@ document.onkeyup = function(event) {
 	if (guesses === 0) {
 
 	//make sure to let the user know they are a loser
-		document.getElementById("instructions").innerHTML = "You're a freaking loser. <br> Press any key to try again.";
+		document.getElementById("instructions").innerHTML = "You're a freaking loser.";
+		document.getElementById("instructions2").innerHTML = "Press any key to try again.";
 		currentTeamArray = [];
 		wordArray = [];
 
@@ -260,7 +280,7 @@ document.onkeyup = function(event) {
 		guesses = 5;
 		document.getElementById("guessesRemainingDisplay").innerHTML = "Number of guesses remaining: " + guesses;
 		userGuessArray = [];
-		document.getElementById("guessedDisplay").innerHTML = "Letters already guessed: ";
+		document.getElementById("guessedDisplay").innerHTML = "<br/>";
 
 		counter = 0;
 	}

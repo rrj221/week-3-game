@@ -19,3 +19,24 @@ body {
 	height: 281.25px;
 	opacity: 0;
 }
+
+#wins, #wordDisplay, #guessedDisplay {
+	border: 2px solid #E82508;
+	background-color: blue;
+}
+
+#wordBox, #guessesBox, #winsBox {
+	/*border: 2px solid #3EFF10;*/
+	border: 2px solid white;
+	height: 125px;
+	background-color: black;
+	padding: 10px;
+}
+
+#guessesBox {
+	height: 175px;
+}
+
+#wordDisplay {
+	font-weight: 900;
+}
