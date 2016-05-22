@@ -238,7 +238,7 @@ document.onkeyup = function(event) {
 	if (guesses === 0) {
 
 	//make sure to let the user know they are a loser
-		document.getElementById("instructions").innerHTML = "You're a freaking loser. Press any key to try again."
+		document.getElementById("instructions").innerHTML = "You're a freaking loser. <br> Press any key to try again.";
 		currentTeamArray = [];
 		wordArray = [];
 
