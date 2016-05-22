@@ -200,7 +200,7 @@ document.onkeyup = function(event) {
 // SECOND HALF OF WIN//////////////////////////////////////////////////////////				
 
 			//make sure to let the user know they are a winner
-			document.getElementById("instructions").innerHTML = "You're a winner! Press any key to play again."
+			document.getElementById("instructions").innerHTML = "You're a winner! <br/>Press any key to play again."
 			currentTeamArray = [];
 			wordArray = [];
 
