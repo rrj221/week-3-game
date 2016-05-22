@@ -28,7 +28,7 @@
 	var wordForWinStuff;
 	var counter = 0;
 
-	var teams = ["BLAZERS", "BUCKS", "BULLS", "CAVALIERS", "CELTICS", "CLIPPERS", "GRIZZLIES", "HAWKS", "HEAT", "HORNETS", "JAZZ", "KINGS", "KNICKS", "LAKERS", "MAGIC", "MAVERICKS", "NETS", "NUGGETS", "PACERS", "PELICANS", "PISTONS", "RAPTORS", "ROCKETS", "SIXERS", "SPURS", "SUNS", "TIMBERWOLVES", "THUNDER", "WARRIORS", "WIZARDS"];
+	var teams = ["BLAZERS", "BUCKS", "BULLS", "CAVALIERS", "CELTICS", "CLIPPERS", "GRIZZLIES", "HAWKS", "HEAT", "HORNETS", "JAZZ", "KINGS", "KNICKS", "LAKERS", "MAGIC", "MAVERICKS", "NETS", "NUGGETS", "PACERS", "PELICANS", "PISTONS", "RAPTORS", "ROCKETS", "SIXERS", "SONICS", "SPURS", "SUNS", "TIMBERWOLVES", "THUNDER", "WARRIORS", "WIZARDS"];
 
 // Create code to randomly choose one of the 30 teams 
 	var currentTeamIndex = Math.floor(Math.random()*teams.length);
@@ -111,65 +111,98 @@
 				wordForWinStuff = wordArray.join([separator = '']);	
 				//giant if else statment
 				if (wordForWinStuff === 'BLAZERS') {
-					console.log("blazers");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/blazers-logo.gif" alt="Blazers Logo"/>';
 				} else if (wordForWinStuff === 'BUCKS') {
-					console.log("bucks");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/bucks-logo.gif" alt="Bucks Logo"/>';		
 				} else if (wordForWinStuff === 'BULLS') {
-					console.log("bulls");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/bulls-logo.gif" alt="Bulls Logo"/>';			
 				} else if (wordForWinStuff === 'CAVALIERS') {
-					console.log("cavaliers");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/cavaliers-logo.gif" alt="Cavaliers Logo"/>';			
 				} else if (wordForWinStuff === 'CELTICS') {
-					console.log("celtics");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/celtics-logo.gif" alt="Celtics Logo"/>';				
 				} else if (wordForWinStuff === 'CLIPPERS') {
-					console.log("clippers");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/clippers-logo.gif" alt="Clippers Logo"/>';
 				} else if (wordForWinStuff === 'GRIZZLIES') {
-					console.log("grizzlies");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/grizzlies-logo.gif" alt="Grizzlies Logo"/>';			
 				} else if (wordForWinStuff === 'HAWKS') {
-					console.log("hawks");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/hawks-logo.gif" alt="Hawks Logo"/>';
 				} else if (wordForWinStuff === 'HEAT') {
-					console.log("heat");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/bucks-heat.gif" alt="Heat Logo"/>';
 				} else if (wordForWinStuff === 'HORNETS') {
-					console.log("hornets");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/hornets-logo.gif" alt="Hornets Logo"/>';
 				} else if (wordForWinStuff === 'JAZZ') {
-					console.log("jazz");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/jazz-logo.gif" alt="Jazz Logo"/>';
 				} else if (wordForWinStuff === 'KINGS') {
-					console.log("kings");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/kings-logo.gif" alt="Kings Logo"/>';
 				} else if (wordForWinStuff === 'KNICKS') {
-					console.log("knicks");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/Knicks-logo.gif" alt="Knicks Logo"/>';
 				} else if (wordForWinStuff === 'LAKERS') {
-					console.log("lakers");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/lakers-logo.gif" alt="Lakers Logo"/>';
 				} else if (wordForWinStuff === 'MAGIC') {
-					console.log("magic");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/magic-logo.gif" alt="Magic Logo"/>';
 				} else if (wordForWinStuff === 'MAVERICKS') {
-					console.log("mavericks");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/mavericks-logo.gif" alt="Mavericks Logo"/>';
 				} else if (wordForWinStuff === 'NETS') {
-					console.log("nets");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/nets-logo.gif" alt="Nets Logo"/>';
 				} else if (wordForWinStuff === 'NUGGETS') {
-					console.log("nuggets");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/nuggets-logo.gif" alt="Nuggets Logo"/>';
 				} else if (wordForWinStuff === 'PACERS') {
-					console.log("pacers");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/pacers-logo.gif" alt="Pacers Logo"/>';
 				} else if (wordForWinStuff === 'PELICANS') {
-					console.log("pelicans");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/pelicans-logo.gif" alt="Pelicans Logo"/>';
 				} else if (wordForWinStuff === 'PISTONS') {
-					console.log("pacers");	
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/pistons-logo.gif" alt="Pistons Logo"/>';	
 				} else if (wordForWinStuff === 'RAPTORS') {
-					console.log("raptors");		
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/raptors-logo.gif" alt="Raptors Logo"/>';	
 				} else if (wordForWinStuff === 'ROCKETS') {
-					console.log("rockets");	
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/rockets-logo.gif" alt="Rockets Logo"/>';
 				} else if (wordForWinStuff === 'SIXERS') {
-					console.log("sixers");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/sixers-logo.gif" alt="Sixers Logo"/>';
+				} else if (wordForWinStuff === 'SONICS') {
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/sonics-logo.gif" alt="Sonics Logo"/>';
 				} else if (wordForWinStuff === 'SPURS') {
-					console.log("spurs");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/spurs-logo.gif" alt="Spurs Logo"/>';
 				} else if (wordForWinStuff === 'SUNS') {
-					console.log("suns");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/suns-logo.gif" alt="Suns Logo"/>';
 				} else if (wordForWinStuff === 'THUNDER') {
-					console.log("rockets");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/rockets-logo.gif" alt="Rockets Logo"/>';
 				} else if (wordForWinStuff === 'TIMBERWOLVES') {
-					console.log("timberwolves");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/timberwolves-logo.gif" alt="Timberwolves Logo"/>';
 				} else if (wordForWinStuff === 'WARRIORS') {
-					console.log("warriors");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/warriors-logo.gif" alt="Warriors Logo"/>';
 				} else if (wordForWinStuff === 'WIZARDS') {
-					console.log("wizards");
+					document.getElementById("winningTeamDisplay").innerHTML = 
+					'<img src="assets/images/wizards-logo.gif" alt="Wizards Logo"/>';
 				} 
 
 // SECOND HALF OF WIN//////////////////////////////////////////////////////////				
