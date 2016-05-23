@@ -7,7 +7,7 @@ var wordForScreen;
 var wordForWinStuff;
 var counter = 0;
 
-var teams = ["BLAZERS", "BUCKS", "BULLS", "CAVALIERS", "CELTICS", "CLIPPERS",
+var teams = ["BLAZERS", "BUCKS", "BULLETS", "BULLS", "CAVALIERS", "CELTICS", "CLIPPERS",
 			 "GRIZZLIES", "HAWKS", "HEAT", "HORNETS", "JAZZ", "KINGS", "KNICKS", 
 			 "LAKERS", "MAGIC", "MAVERICKS", "NETS", "NUGGETS", "PACERS", "PELICANS", 
 			 "PISTONS", "RAPTORS", "ROCKETS", "SIXERS", "SONICS", "SPURS", "SUNS",
@@ -39,9 +39,10 @@ audio.addEventListener('ended', function() {
 audio.play();
 
 
-//shows curry
-// var element = document.getElementById("curry");
-// element.style.opacity = 1;
+//shows curry - not working
+//trying to get it to display for a short amount of time when team is warriors (and you win)
+// document.getElementById("curry-div").style.opacity = .5;
+
 
 
 
@@ -64,8 +65,12 @@ document.onkeyup = function(event) {
 		wordForScreen = wordArray.join([separator = ' ']);
 		document.getElementById("wordDisplay").innerHTML = wordForScreen;
 		document.getElementById("instructions").innerHTML = "Let the games begin!";
-		document.getElementById("instructions2").innerHTML = "<br/>"
+		document.getElementById("instructions2").innerHTML = "Pick a letter";
 		return;	
+	}
+
+	if (counter === 2) {
+		document.getElementById("instructions2").innerHTML = "<br/>";
 	}
 
 	// error checking - must be a letter
@@ -125,7 +130,10 @@ document.onkeyup = function(event) {
 				'<img src="assets/images/blazers-logo.gif" alt="Blazers Logo"/>';
 			} else if (wordForWinStuff === 'BUCKS') {
 				document.getElementById("winningTeamDisplay").innerHTML = 
-				'<img src="assets/images/bucks-logo.gif" alt="Bucks Logo"/>';		
+				'<img src="assets/images/bucks-logo.gif" alt="Bucks Logo"/>';
+			} else if (wordForWinStuff === 'BULLETS') {
+				document.getElementById("winningTeamDisplay").innerHTML = 
+				'<img src="assets/images/bullets-logo.gif" alt="Bullets Logo"/>';	
 			} else if (wordForWinStuff === 'BULLS') {
 				document.getElementById("winningTeamDisplay").innerHTML = 
 				'<img src="assets/images/bulls-logo.gif" alt="Bulls Logo"/>';			

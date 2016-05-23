@@ -7,6 +7,25 @@
 	margin: 0 auto;
 }
 
+header {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+}
+
+.headerLeft {
+	float: left;
+}
+
+.headerRight {
+	float: right;
+}
+
+.slogan {
+	clear: all;
+	float: left;
+}
+
 body {
 	background-image: url("../images/basketball-net.jpg");
 	color: orange;
@@ -40,3 +59,4 @@ body {
 #wordDisplay {
 	font-weight: 900;
 }
+
