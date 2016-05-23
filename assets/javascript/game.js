@@ -166,7 +166,7 @@ document.onkeyup = function(event) {
 				'<img src="assets/images/kings-logo.gif" alt="Kings Logo"/>';
 			} else if (wordForWinStuff === 'KNICKS') {
 				document.getElementById("winningTeamDisplay").innerHTML = 
-				'<img src="assets/images/Knicks-logo.gif" alt="Knicks Logo"/>';
+				'<img src="assets/images/knicks-logo.gif" alt="Knicks Logo"/>';
 			} else if (wordForWinStuff === 'LAKERS') {
 				document.getElementById("winningTeamDisplay").innerHTML = 
 				'<img src="assets/images/lakers-logo.gif" alt="Lakers Logo"/>';
